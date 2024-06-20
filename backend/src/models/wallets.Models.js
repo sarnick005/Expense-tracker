@@ -12,6 +12,9 @@ const walletSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        walletIcon: {
+            type: String,
+        },
         initialAmount: {
             type: Number,
             default: 0,
@@ -23,7 +26,7 @@ const walletSchema = new mongoose.Schema(
                     `${props.value} is not a valid initial amount! Initial amount must be non-negative.`,
             },
         },
-        currentAmount: {
+        balanceAmount: {
             type: Number,
             default: 0,
             validate: {
@@ -31,10 +34,10 @@ const walletSchema = new mongoose.Schema(
                     return v >= 0;
                 },
                 message: (props) =>
-                    `${props.value} is not a valid current amount! Current amount must be non-negative.`,
+                    `${props.value} is not a valid balance amount! Balance amount must be non-negative.`,
             },
         },
     },
     { timestamps: true }
 );
-export default mongoose.model("Wallet", walletSchema);
+export const Wallet =  mongoose.model("Wallet", walletSchema);

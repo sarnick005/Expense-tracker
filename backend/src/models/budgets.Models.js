@@ -41,4 +41,4 @@ const budgetSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-export default mongoose.model("Budget", budgetSchema);
+export const Budget =  mongoose.model("Budget", budgetSchema);
